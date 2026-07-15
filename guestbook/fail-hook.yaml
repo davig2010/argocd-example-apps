@@ -11,6 +11,6 @@ spec:
       containers:
       - name: migration
         image: alpine
-        command: ["sh", "-c", "echo 'Running migrations...'; exit 1"]
+        command: ["sh", "-c", "echo 'Running migrations...'; exit 0"]
       restartPolicy: Never
   backoffLimit: 0
