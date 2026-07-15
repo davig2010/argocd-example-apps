@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-migration-fail
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: HookFailed
+spec:
+  template:
+    spec:
+      containers:
+      - name: migration
+        image: alpine
+        command: ["sh", "-c", "echo 'Running migrations...'; exit 1"]
+      restartPolicy: Never
+  backoffLimit: 0
